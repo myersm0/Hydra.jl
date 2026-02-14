@@ -17,7 +17,7 @@ This package is not registered as it clashes with the other Hydra.jl already in 
 Within Julia (version >= 1.12):
 ```julia
 using Pkg
-Pkg.add(url="https://github.com/yourname/Hydra.jl")
+Pkg.add(url="https://github.com/myersm0/Hydra.jl")
 ```
 
 ## Usage
