@@ -12,7 +12,9 @@ The original implementation is in MATLAB: ([evarol/HYDRA](https://github.com/eva
 > Note: Not to be confused with the FluxML registered package [Hydra.jl](https://github.com/FluxML/Hydra.jl), which is entirely different!
 
 ## Installation
-This package is not registered as it clashes with the other Hydra.jl already in the registry. Install directly from the repository:
+This package is not registered as it clashes with the other Hydra.jl already in the registry. Install directly from the repository.
+
+Within Julia (version >= 1.12):
 ```julia
 using Pkg
 Pkg.add(url="https://github.com/yourname/Hydra.jl")
