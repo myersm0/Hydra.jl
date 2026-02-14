@@ -1,9 +1,9 @@
-function consensus_clustering(IDX::AbstractMatrix, K::Integer)
-	n = size(IDX, 1)
+function consensus_clustering(labels::AbstractMatrix, K::Integer)
+	n = size(labels, 1)
 	cooc = zeros(n, n)
 	for i in 1:(n - 1)
 		for j in (i + 1):n
-			cooc[i, j] = count(IDX[i, :] .== IDX[j, :])
+			cooc[i, j] = count(labels[i, :] .== labels[j, :])
 		end
 	end
 	cooc .+= cooc'

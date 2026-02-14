@@ -39,12 +39,12 @@ function hydra(
 		patient_folds = fold_assignments[K][patient_mask, :]
 		ari_values[i] = cross_validation_stability(patient_folds)
 	end
-	CIDX = -ones(Int, n, length(cluster_values))
+	final_assignments = -ones(Int, n, length(cluster_values))
 	for (i, K) in enumerate(cluster_values)
 		patient_folds = fold_assignments[K][patient_mask, :]
-		CIDX[patient_mask, i] = consensus_clustering(patient_folds, K)
+		final_assignments[patient_mask, i] = consensus_clustering(patient_folds, K)
 	end
-	return HydraResult(CIDX, ari_values, config.cluster_range)
+	return HydraResult(final_assignments, ari_values, config.cluster_range)
 end
 
 function make_cv_partition(n::Integer, num_folds::Integer)

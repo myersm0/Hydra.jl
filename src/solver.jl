@@ -8,7 +8,7 @@ function solve_hydra(
 	n = size(X, 1)
 	idx_p = findall(Y .== 1)
 	n_p = length(idx_p)
-	IDX = zeros(Int, n_p, config.num_consensus)
+	labels = zeros(Int, n_p, config.num_consensus)
 	for run in 1:config.num_consensus
 		W = ones(n, K) ./ K
 		W[Y .== 1, :] = initialize(X, Y, K, config.initialization)
@@ -31,12 +31,12 @@ function solve_hydra(
 				break
 			end
 		end
-		IDX[:, run] = argmax.(eachrow(S[Y .== 1, :]))
+		labels[:, run] = argmax.(eachrow(S[Y .== 1, :]))
 	end
 	if config.num_consensus > 1
-		final_idx = consensus_clustering(IDX, K)
+		final_idx = consensus_clustering(labels, K)
 	else
-		final_idx = IDX[:, 1]
+		final_idx = labels[:, 1]
 	end
 	W = zeros(n, K)
 	for (i, j) in enumerate(final_idx)
